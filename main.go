@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 
-	"config"
+	/** go.mod ファイルの module 名が、importパス(todo_app_mod) に影響する */
+	"todo_app_mod/config"
 )
 
 func main() {
