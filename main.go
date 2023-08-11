@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"log"
 
-	"config"
+	/** go.mod ファイルの module 名が、importパス(todo_app_mod) に影響する */
+	"todo_app_mod/config"
 )
 
 func main() {
@@ -11,4 +13,6 @@ func main() {
 	fmt.Println(config.Config.SQLDriver)
 	fmt.Println(config.Config.DbName)
 	fmt.Println(config.Config.LogFile)
+
+	log.Println("test")
 }
