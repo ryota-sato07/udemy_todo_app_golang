@@ -13,7 +13,10 @@ func main() {
 	// test.Init()
 
 	/** User の検証 */
-	test.User()
+	// test.User()
+
+	/** Todo の検証 */
+	test.Todo()
 
 	fmt.Println(models.Db)
 
