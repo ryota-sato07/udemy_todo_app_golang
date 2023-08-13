@@ -30,4 +30,13 @@ func main() {
 	/** ユーザーの取得 */
 	u, _ := models.GetUser(1)
 	fmt.Println(u)
+
+	/** ユーザーの更新 */
+	fmt.Println("========== [ ユーザーの更新 ] ==========")
+	u.Name = "Test2"
+	u.Email = "test2@example.com"
+	u.UpdateUser()
+	u, _ = models.GetUser(1)
+	fmt.Println(u)
+	fmt.Println("========== [ ユーザーの更新 ] ==========")
 }
