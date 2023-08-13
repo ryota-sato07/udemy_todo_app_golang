@@ -39,4 +39,9 @@ func main() {
 	u, _ = models.GetUser(1)
 	fmt.Println(u)
 	fmt.Println("========== [ ユーザーの更新 ] ==========")
+
+	/** ユーザーの削除 */
+	u.DeleteUser()
+	u, _ = models.GetUser(1)
+	fmt.Println(u)
 }
