@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	/** ini ファイルの取得 */
 	// fmt.Println(config.Config.Port)
 	// fmt.Println(config.Config.SQLDriver)
 	// fmt.Println(config.Config.DbName)
@@ -17,11 +18,16 @@ func main() {
 
 	fmt.Println(models.Db)
 
-	u := &models.User{}
-	u.Name = "test"
-	u.Email = "test@example.com"
-	u.PassWord = "testtest"
-	fmt.Println(u)
+	/** ユーザーの作成 */
+	// u := &models.User{}
+	// u.Name = "test"
+	// u.Email = "test@example.com"
+	// u.PassWord = "testtest"
+	// fmt.Println(u)
+	//
+	// u.CreateUser()
 
-	u.CreateUser()
+	/** ユーザーの取得 */
+	u, _ := models.GetUser(1)
+	fmt.Println(u)
 }
