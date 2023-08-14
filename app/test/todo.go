@@ -1,7 +1,6 @@
 package test
 
 import (
-	"fmt"
 	"todo_app_mod/app/models"
 )
 
@@ -21,9 +20,14 @@ func Todo() {
 	// }
 
 	/** User から Todo を取得 */
-	user2, _ := models.GetUser(2)
-	todos, _ := user2.GetTodosByUser()
-	for _, v := range todos {
-		fmt.Println(v)
-	}
+	// user2, _ := models.GetUser(2)
+	// todos, _ := user2.GetTodosByUser()
+	// for _, v := range todos {
+	// 	fmt.Println(v)
+	// }
+
+	/** Todo の更新 */
+	t, _ := models.GetTodo(1)
+	t.Content = "Update Todo"
+	t.UpdateTodo()
 }
