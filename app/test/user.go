@@ -7,17 +7,17 @@ import (
 
 func User() {
 	/** ユーザーの作成 */
-	// u := &models.User{}
-	// u.Name = "test"
-	// u.Email = "test@example.com"
-	// u.PassWord = "testtest"
-	// fmt.Println(u)
-	//
-	// u.CreateUser()
+	u := &models.User{}
+	u.Name = "test3"
+	u.Email = "test3@example.com"
+	u.PassWord = "testtest"
+	fmt.Println(u)
+
+	u.CreateUser()
 
 	/** ユーザーの取得 */
-	u, _ := models.GetUser(2)
-	fmt.Println(u)
+	// u, _ := models.GetUser(2)
+	// fmt.Println(u)
 
 	/** ユーザーの更新 */
 	// fmt.Println("========== [ ユーザーの更新 ] ==========")

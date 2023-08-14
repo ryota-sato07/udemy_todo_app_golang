@@ -3,3 +3,5 @@
 2023/08/12 20:06:33 users.go:39: near "values": syntax error
 2023/08/13 16:35:18 init.go:16: test
 2023/08/13 16:44:46 todos.go:23: 4 values for 3 columns
+2023/08/14 14:54:47 todos.go:84: no such column: contnet
+2023/08/14 14:56:46 todos.go:84: no such column: contnet
