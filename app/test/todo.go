@@ -27,7 +27,11 @@ func Todo() {
 	// }
 
 	/** Todo の更新 */
-	t, _ := models.GetTodo(1)
-	t.Content = "Update Todo"
-	t.UpdateTodo()
+	// t, _ := models.GetTodo(1)
+	// t.Content = "Update Todo"
+	// t.UpdateTodo()
+
+	/** Todo の更新 */
+	t, _ := models.GetTodo(3)
+	t.DeleteTodo()
 }
