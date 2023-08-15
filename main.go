@@ -1,14 +1,12 @@
 package main
 
 import (
-	"fmt"
-
-	/** go.mod ファイルの module 名が、importパス(todo_app_mod) に影響する */
-	"todo_app_mod/app/models"
 	"todo_app_mod/app/test"
 )
 
 func main() {
+	// fmt.Println(models.Db)
+
 	/** ini の検証 */
 	// test.Init()
 
@@ -18,6 +16,6 @@ func main() {
 	/** Todo の検証 */
 	test.Todo()
 
-	fmt.Println(models.Db)
-
+	/** Server の検証 */
+	test.Server()
 }
