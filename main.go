@@ -14,7 +14,7 @@ func main() {
 	// test.User()
 
 	/** Todo の検証 */
-	test.Todo()
+	// test.Todo()
 
 	/** Server の検証 */
 	test.Server()
