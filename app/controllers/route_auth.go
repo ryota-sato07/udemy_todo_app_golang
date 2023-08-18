@@ -29,3 +29,10 @@ func signup(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", 302)
 	}
 }
+
+/**
+ * ログインページ
+ */
+func login(w http.ResponseWriter, r *http.Request) {
+	generateHTML(w, nil, "layout", "public_navbar", "login")
+}
