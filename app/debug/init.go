@@ -1,4 +1,4 @@
-package test
+package debug
 
 import (
 	"fmt"
@@ -13,6 +13,6 @@ func Init() {
 	fmt.Println(config.Config.DbName)
 	fmt.Println(config.Config.LogFile)
 
-	log.Println("test")
+	log.Println("debug")
 
 }

@@ -1,4 +1,4 @@
-package test
+package debug
 
 import (
 	"todo_app_mod/app/models"
