@@ -2,6 +2,7 @@ package test
 
 import (
 	"fmt"
+	"log"
 	"todo_app_mod/app/models"
 )
 
@@ -36,4 +37,15 @@ func User() {
 	/** メールアドレスからユーザーを取得 */
 	user, _ := models.GetUserByEmail("test@example.com")
 	fmt.Println(user)
+
+	/** セッションの作成 */
+	session, err := user.CreateSession()
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Println(session)
+
+	/** セッションの検証 */
+	valid, _ := session.CheckSession()
+	fmt.Println(valid)
 }
