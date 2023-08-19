@@ -139,7 +139,7 @@ created_at) values (?, ?, ?, ?)`
 }
 
 /**
- * セッションの作成
+ * セッションの検証
  */
 func (sess *Session) CheckSession() (valid bool, err error) {
 	cmd := `select id, uuid, email, user_id, created_at from sessions where uuid = ?`
