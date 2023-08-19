@@ -46,13 +46,13 @@ func StartMainServer() error {
 	http.HandleFunc("/", top)
 	http.HandleFunc("/signup", signup)
 	http.HandleFunc("/login", login)
+	http.HandleFunc("/authenticate", authenticate)
 
 	/** ログイン後のみアクセス可能 */
 	http.HandleFunc("/todos", index)
+	http.HandleFunc("/todos/new", todoNew)
+	http.HandleFunc("/todos/save", todoSave)
 	http.HandleFunc("/logout", logout)
-
-	/** 認証 */
-	http.HandleFunc("/authenticate", authenticate)
 
 	return http.ListenAndServe(":"+config.Config.Port, nil)
 }
