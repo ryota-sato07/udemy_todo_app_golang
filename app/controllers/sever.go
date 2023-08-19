@@ -49,6 +49,7 @@ func StartMainServer() error {
 
 	/** ログイン後のみアクセス可能 */
 	http.HandleFunc("/todos", index)
+	http.HandleFunc("/logout", logout)
 
 	/** 認証 */
 	http.HandleFunc("/authenticate", authenticate)
