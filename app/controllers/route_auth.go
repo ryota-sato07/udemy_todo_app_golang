@@ -7,11 +7,19 @@ import (
 )
 
 /**
- * 新規登録ページ
+ * 新規登録ページ（ログイン前）
  */
 func signup(w http.ResponseWriter, r *http.Request) {
+	/** 新規登録ページの表示 */
 	if r.Method == "GET" {
-		generateHTML(w, nil, "layout", "public_navbar", "signup")
+		_, err := session(w, r)
+		if err != nil {
+			generateHTML(w, nil, "layout", "public_navbar", "signup")
+		} else {
+			http.Redirect(w, r, "/todos", 302)
+		}
+
+		/** ユーザーの登録処理 */
 	} else if r.Method == "POST" {
 		err := r.ParseForm()
 		if err != nil {
@@ -31,10 +39,15 @@ func signup(w http.ResponseWriter, r *http.Request) {
 }
 
 /**
- * ログインページ
+ * ログインページ（ログイン前）
  */
 func login(w http.ResponseWriter, r *http.Request) {
-	generateHTML(w, nil, "layout", "public_navbar", "login")
+	_, err := session(w, r)
+	if err != nil {
+		generateHTML(w, nil, "layout", "public_navbar", "login")
+	} else {
+		http.Redirect(w, r, "/todos", 302)
+	}
 }
 
 /**
@@ -63,4 +76,20 @@ func authenticate(w http.ResponseWriter, r *http.Request) {
 	} else {
 		http.Redirect(w, r, "/login", 302)
 	}
+}
+
+/**
+ * ログアウト処理
+ */
+func logout(w http.ResponseWriter, r *http.Request) {
+	cookie, err := r.Cookie("_cookie")
+	if err != nil {
+		log.Println(err)
+	}
+
+	if err != http.ErrNoCookie {
+		session := models.Session{UUID: cookie.Value}
+		session.DeleteSessionByUUID()
+	}
+	http.Redirect(w, r, "/login", 302)
 }
