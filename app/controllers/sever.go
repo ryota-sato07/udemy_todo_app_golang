@@ -40,7 +40,7 @@ func session(w http.ResponseWriter, r *http.Request) (sess models.Session, err e
 /**
  * Todoの編集・更新の正規表現
  */
-var validPath = regexp.MustCompile("^/todos/(edit|update)/([0-9]+)$")
+var validPath = regexp.MustCompile("^/todos/(edit|update|delete)/([0-9]+)$")
 
 /**
  * リクエストURLからTodoのIDを取得
@@ -82,6 +82,7 @@ func StartMainServer() error {
 	http.HandleFunc("/todos/save", todoSave)
 	http.HandleFunc("/todos/edit/", parseURL(todoEdit))
 	http.HandleFunc("/todos/update/", parseURL(todoUpdate))
+	http.HandleFunc("/todos/delete/", parseURL(todoDelete))
 	http.HandleFunc("/logout", logout)
 
 	return http.ListenAndServe(":"+config.Config.Port, nil)
