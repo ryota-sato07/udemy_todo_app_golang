@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"regexp"
+	"strconv"
 	"todo_app_mod/app/models"
 	"todo_app_mod/config"
 )
@@ -36,6 +38,32 @@ func session(w http.ResponseWriter, r *http.Request) (sess models.Session, err e
 }
 
 /**
+ * Todoの編集・更新の正規表現
+ */
+var validPath = regexp.MustCompile("^/todos/(edit|update)/([0-9]+)$")
+
+/**
+ * リクエストURLからTodoのIDを取得
+ */
+func parseURL(fn func(http.ResponseWriter, *http.Request, int)) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		// /todos/edit/1
+		q := validPath.FindStringSubmatch(r.URL.Path)
+		if q == nil {
+			http.NotFound(w, r)
+			return
+		}
+		qi, err := strconv.Atoi(q[2])
+		if err != nil {
+			http.NotFound(w, r)
+			return
+		}
+
+		fn(w, r, qi)
+	}
+}
+
+/**
  * サーバー起動
  */
 func StartMainServer() error {
@@ -52,6 +80,8 @@ func StartMainServer() error {
 	http.HandleFunc("/todos", index)
 	http.HandleFunc("/todos/new", todoNew)
 	http.HandleFunc("/todos/save", todoSave)
+	http.HandleFunc("/todos/edit/", parseURL(todoEdit))
+	http.HandleFunc("/todos/update/", parseURL(todoUpdate))
 	http.HandleFunc("/logout", logout)
 
 	return http.ListenAndServe(":"+config.Config.Port, nil)
